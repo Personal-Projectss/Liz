@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #c687eb; /* Color de fondo del cielo */
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .girasol {
+        width: 50px;
+        height: 50px;
+        background-image: url("girasol.png"); /* Reemplaza 'girasol.png' con la ruta de tu imagen de girasol */
+        position: absolute;
+        animation: girasol-fall 5s linear infinite;
+        z-index: 1; /* Asegura que los girasoles estén detrás del modal */
+      }
+
+      @keyframes girasol-fall {
+        0% {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 1;
+        }
+      }
+
+      /* Estilos para el modal */
+      .modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 20px;
+        width: 80%;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        z-index: 2; /* Asegura que el modal esté por encima de los girasoles */
+        opacity: 0; /* Inicialmente oculta el modal */
+        transition: opacity 0.3s ease-in-out; /* Agrega una transición de opacidad */
+      }
+
+      .txt-msg {
+        font-weight: bold;
+        color: rgb(172, 110, 230);
+      }
+
+      /* Estilos para el botón "Siguiente" */
+      .next-button {
+        display: block;
+        margin-top: 20px;
+        cursor: pointer;
+        background-color: #87ceeb;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+      }
+
+      /* Estilos para mostrar el modal */
+      .modal.show {
+        opacity: 1; /* Muestra el modal con una transición de opacidad */
+      }
+    </style>
+    <title>Lluvia de verdad</title>
+  </head>
+  <body>
+    <div class="modal" id="messageModal">
+      <p id="messageText" class="txt-msg">Mensaje aquí</p>
+      <div class="btn-container">
+        <button class="next-button" onclick="nextMessage()">
+          Siguiente 💜💗
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const messages = [
+        "Hola bonita!, espero estes muy bien.",
+        "Nope, no estas viendo el mismo regalo de la ultima vez.",
+        "Bonita, realmente quiero expresarte, de la forma que mejor se, lo que tu eres para mi y aclarar un poco, las dudas que segun yo debes estar teniendo",
+        "Yo realmente, entiendo que no crees en los hombres, de hecho y aunque suena algo cliche jaja, me duele bastante por que tu no mereces algo asi, eres una persona demasiado bonita y lo se porque entre tantas personas, para mi, eres la que mas brilla, a mis ojos lo eres.",
+        "Es por eso que, hoy, no te voy a pedir que creas en los hombres, por que, tienes razon en muchas cosas, la mayoria mienten, solo están por interés o simplemente estan por estar, relamente, la mayoria son asi.",
+        "Hoy quiero pedirte que creas en mi, aunque suene gracioso, no soy un hombre, al menos no como los conoces",
+        "Conmigo puedes tener la plena seguridad que a cada cosa bonita que yo te digo, te la voy a demostrar, porque yo se, que de nada sirve decir las cosas si no se demuestran",
+        "Eso puedes creermelo, a ciegas.",
+        "Por que para mi tu no eres una opción, ni un trofeo, ni algún pasatiempo.",
+        "Para mi tu eres una persona autentica, hermosa, maravillosa, gentil.",
+        "Para mi eres esa persona que entre tantas almas es la que mas brilla.",
+        "Para mi eres esa niña bonita que me gusta ver sonreir todo el tiempo.",
+        "Para mi eres esa niña bonita que anuque no lo necesite, le doy mi apoyo para que cumpla lo que ella sueña",
+        "Para mi eres la persona a la que quiero cumplirle:",
+        "Disfrazarnos iguales en Halloween.",
+        "Darle un cumpleaños con muchos globos.",
+        "Darle su primera navidad buena.",
+        "​Estar ahi cuando ella mas lo necesite.",
+        "​Hacerla protagonista sin que me lo pida.",
+        "Hacer tiktoks Goals :,v.",
+        "Tener Zapatos iguales.",
+        `Ser el causante de la frase "¿De que cajita feliz saliste?."`,
+        "​Ser el motivo para que no corra y no le pase nada.",
+        "Asi es, recuerdo todas esas cosas, y mas.",
+        "La niña bonita que cuando sonrie se le hacen unos muy brillantes ojitos, mientras se hacen chiquititos",
+        "Esos ojitos que no soy capaz de verlos tristes y que como fuese quisiera darles tranquilidad",
+        "Por que lo recuerdo?, porque tu lo vales! 💜💗🌻.",
+        "Por que tu sonrisa me hace feliz y quisiera hacerte sentir los mismo con la mia",
+        "Por que para mi eres una mujer con un corazon hermoso.",
+        "Por que para mi eres unica, realmente unica",
+        "Y cuando encuentras algo asi, no hace falta buscarlo de nuevo, Solo quieres enamorarlo cada dia mas, Por esto y por mas cosas, puedes creer en mi, por que aun sabiendo que a ti no te gusta la palabra 'Prometo', yo si te prometo, que valdra la pena creer en mi, se lo que vale esa palabra para ti y es por eso que la tomo enserio y 'Prometo que valdrá la pena' por que quiero enamorarte cada dia más",
+        "Lo vales bonita 💜💗🌻 #410"
+      ];
+
+      let currentIndex = 0;
+
+      function showNextMessage() {
+        const modal = document.getElementById("messageModal");
+        const messageText = document.getElementById("messageText");
+
+        if (currentIndex < messages.length) {
+          messageText.textContent = messages[currentIndex];
+          modal.classList.add("show"); // Muestra el modal con la clase "show"
+          currentIndex++;
+        } else {
+          modal.style.display = "none";
+        }
+      }
+
+      function nextMessage() {
+        const modal = document.getElementById("messageModal");
+        modal.classList.remove("show"); // Oculta el modal con la clase "show"
+        setTimeout(showNextMessage, 300); // Cambia el mensaje después de una breve transición (0.3 segundos)
+      }
+
+      function createGirasol() {
+        const girasol = document.createElement("div");
+        girasol.className = "girasol";
+        girasol.innerHTML = `<img src="./sunflower.png" alt="">`;
+        const x = Math.random() * window.innerWidth;
+        const delay = Math.random() * 1.5; // Ajusta el valor para variar la velocidad de caída
+        girasol.style.left = `${x}px`;
+        girasol.style.animationDuration = `${5 + delay}s`; // Ajusta la duración de la animación
+        document.body.appendChild(girasol);
+
+        girasol.addEventListener("animationiteration", () => {
+          // Elimina el girasol cuando cae al suelo
+          document.body.removeChild(girasol);
+          createGirasol(); // Crea otro girasol después de que caiga uno
+        });
+      }
+
+      for (let i = 0; i < 50; i++) {
+        setTimeout(createGirasol, Math.random() * 5000); // Agrega girasoles con un retraso aleatorio
+      }
+
+      showNextMessage(); // Mostrar el primer mensaje al cargar la página
+    </script>
+  </body>
+</html>
