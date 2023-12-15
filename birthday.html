@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Happy Birthday Cards</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+      @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+
+      body {
+        font-family: "Indie Flower", cursive;
+        background: #8fc9ff;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+
+      ::selection {
+        background: transparent;
+      }
+
+      h4 {
+        line-height: 1;
+        font-family: "Amatic SC", cursive;
+      }
+
+      .color1 {
+        color: #00b7ff;
+      }
+      .color2 {
+        color: #d400ff;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .card {
+        color: #013243;
+        position: relative;
+        width: 400px;
+        height: 500px;
+        background: #fff;
+        transform-style: preserve-3d;
+        transform: perspective(2000px) rotate(0deg);
+        transition: 1s;
+        margin: 20px;
+      }
+
+      /* .card:hover {
+        transform: perspective(2000px) rotate(15deg) scale(1.2);
+        box-shadow: inset 3px 0 3px rgba(0, 0, 0, 0.3);
+      } */
+
+      /* .card:before,
+    .card:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #BAC1BA, #92A29C);
+      transform-origin: bottom;
+      transform: skewX(-45deg);
+    } */
+
+      .card:before {
+        top: -5px;
+        left: 0;
+      }
+      .card:after {
+        top: 0;
+        right: -5px;
+      }
+
+      .card .imgBox {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-origin: left;
+        transition: 0.7s;
+      }
+
+      .card .bark {
+        position: absolute;
+        background: #e0e1dc;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: 0.7s;
+      }
+
+      .card .imgBox img {
+        min-width: 400px;
+        max-height: 500px;
+      }
+
+      .card:hover .imgBox {
+        transform: rotateY(-135deg);
+      }
+
+      .card:hover .bark {
+        opacity: 1;
+        transition: 0.6s;
+      }
+
+      .card .details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        padding: 0 0 0 15px;
+        z-index: -1;
+      }
+
+      .card .details p {
+        font-size: 15px;
+        line-height: 20px;
+        margin: 0;
+      }
+
+      .card .details h4 {
+        text-align: center;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .div-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .title {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      @keyframes girasol-fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+
+        .girasol {
+            width: 50px;
+            height: 50px;
+            background-image: url('girasol.png'); /* Reemplaza 'girasol.png' con la ruta de tu imagen de girasol */
+            position: relative;
+            animation: girasol-fall 5s linear infinite;
+            z-index: 1; /* Asegura que los girasoles estén detrás del modal */
+        }
+
+        .cards {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+    </style>
+  </head>
+  <body>
+    
+    <div class="cards">
+        <div class="div-container">
+            <h1 class="title mt-2">🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻</h1>
+          </div>
+      
+          <div class="card-container">
+            <div class="card">
+              <div class="imgBox">
+                <div class="bark"></div>
+                <img
+                  src="./images/foto_1.jpg"
+                  alt="Birthday Image"
+                />
+              </div>
+              <div class="details">
+                <h3 class="color2 margin">¿Por que bonita?</h3>
+                <p>
+                  ¿Sabes por que siempre te digo bonita?, por que es la primera
+                  palabra que me viene a la mente cuanto te pienso, una persona
+                  autentica, llena de bondad y ternura, calida y de buen corazón
+                  alegre, con una sonrisa preciosa que me distrae siempre.
+                </p>
+                <br />
+                <br />
+                <p class="mt-1">
+                  Feliz Cumpleaños <span style="color: #d400ff">Bonita ❤️</span>
+                </p>
+              </div>
+            </div>
+      
+            <div class="card">
+              <div class="imgBox">
+                <div class="bark"></div>
+                <img
+                  src="./images/foto_2.0.jpg"
+                  alt="Birthday Image"
+                />
+              </div>
+              <div class="details">
+                <h3 class="color2 margin">La niña del Girasol</h3>
+                <p>
+                  A pesar de que se que te encantan los girasoles, para mi tu eres
+                  como un <span style="color: #d400ff">🌻 Girasol</span> siempre en
+                  busca de la luz del sol, con unos petalos brillantes en esa
+                  sonrrisa. y una sonrisa toda tramposa por que siempre caigo
+                  jaajajaja, quieres convencerme de algo, sonrieme asi como siempre y
+                  ahi me tienes jajaja. Cada que salgo a la calle y veo un girasol, no
+                  dejo de mirarlo, lo unico que me recuerda es a ti, a la niña que
+                  puedes hacer sonreir, regalandole un Girasol. (Yo uso varios para
+                  verte super sonreir! 🌻🌻🌻🌻)
+                </p>
+                <br />
+                <br />
+                <p class="mt-1">
+                  Feliz Cumpleaños
+                  <span style="color: #d400ff">Sonrisa de Girasol 🌻</span>
+                </p>
+              </div>
+            </div>
+      
+            <div class="card">
+              <div class="imgBox">
+                <div class="bark"></div>
+                <img
+                  src="./images/foto_3.jpg"
+                  alt="Birthday Image"
+                />
+              </div>
+              <div class="details">
+                <h3 class="color2 margin">Las canciones de Liz</h3>
+      
+                <p>
+                  Solo me recuerdan a <span style="color: #d400ff">Liz 🌻</span>,
+                  incluso antes de saber que te gustaban, para mi aveces eres música.
+                </p>
+      
+                <br />
+      
+                <a
+                  target="_blank"
+                  style="color: #d400ff"
+                  href="https://open.spotify.com/playlist/6oTy3MaXqHgFng2MuBSfdP?si=VNDtSkBKRWuyAq8FKdbMoA&pi=u-TXHFoSQVQHet"
+                >
+                  Haz Click para escuchar las canciones de liz 🌻
+                </a>
+      
+                <br /><br />
+      
+                <p class="mt-1">
+                  Feliz Cumpleaños
+                  <span style="color: #d400ff">Música 🌻</span>
+                </p>
+              </div>
+            </div>
+      
+            <div class="card">
+              <div class="imgBox">
+                <div class="bark"></div>
+                <img
+                  src="./images/foto_4.jpg"
+                  alt="Birthday Image"
+                />
+              </div>
+              <div class="details">
+                <h3 class="color2 margin">¿Siempre que salimos, pasan cosas?</h3>
+                <p>
+                  Esta no me podia faltar jajajajaja, siempre que vamos a salir o
+                  algo, me dices que nos pasan cosas jajajaja y tienes mucha razon en
+                  eso, pero ... Esa singularidad de nuestras experiencias las atesoro
+                  mucho, SI!! EN EL MOMENTO NINGUNA FUE GRACIOSA, desde pinchadas
+                  colosales, llegadas de la policia al bar, caidas a barrancos, motos
+                  destrozadas, idas a los patios, patadas de señoras aparentemente mas
+                  fuertes que yo en fin ... las atesoro por ser unicas, por ser esos
+                  detalles pintorescos de los cuales a veces nos reimos, para mi son
+                  especiales, igual que tu, no cambiaria esas historias por nada ni
+                  por nadie, nadie que no fueras tú.
+                </p>
+                <p class="mt-1">
+                  Feliz Cumpleaños
+                  <span style="color: #d400ff">Historias compartidas ❤️</span>
+                </p>
+              </div>
+            </div>
+      
+            <div class="card">
+              <div class="imgBox">
+                <div class="bark"></div>
+                <img
+                  src="./images/foto_5.jpg"
+                  alt="Birthday Image"
+                />
+              </div>
+              <div class="details">
+                <h3 class="color2 margin">Liz 🌻</h3>
+                <p>
+                  Quiero desearte y darte el mejor cumpleaños que me sea posible, por
+                  que tu me importas y se que te lo mereces, por que hoy es tu dia
+                  especial, ese dia en el que nacio una niña que tiene nombre y
+                  apellido, esa niña que de grande no mediria mas de 1.65, esa niña
+                  que parece como si pudieses tomar todas las estrellas del universo,
+                  meterlas en un frasco y colocarlas dentro de unos labios, nacio el
+                  arte que muy pocos sabemos apreciar, nacio aquella personita que
+                  para saber cuantos sueños tiene, tendrias que contar los latidos de
+                  su corazón, aquella piloto intrepida que se preocupa mas por unas
+                  tapas que por su propia piel jaja y que no sabes como decirle que
+                  eso esta muy mal, que te importan un soberano comino las tapas,
+                  siempre y cuando ella te mire y te sonria un dia mas, ese dia nacio
+                  la niña que no se como, pero se rie y se ve bonita, la niña que se
+                  emociona por que consigue lo que quiere, toca rodilla y solo tiembla
+                  y sonrie, aquella que es una niña muy juiciosa, que estudia, que ama
+                  a su familia.
+                </p>
+      
+                <br />
+                <p>Un sueño practicamente, pero en real :)</p>
+      
+                <p class="mt-1">
+                  Feliz Cumpleaños
+                  <span style="color: #d400ff">Liz 🌻❤️</span>
+                </p>
+              </div>
+            </div>
+      
+            <!-- Agrega más tarjetas aquí según sea necesario -->
+          </div>
+    </div>
+
+    <script>
+        // function createGirasol() {
+        //     const girasol = document.createElement('div');
+        //     girasol.className = 'girasol';
+        //     girasol.innerHTML = `<img src="./sunflower.png" alt="">`
+        //     const x = Math.random() * window.innerWidth;
+        //     const delay = Math.random() * 1.5; // Ajusta el valor para variar la velocidad de caída
+        //     girasol.style.left = `${x}px`;
+        //     girasol.style.animationDuration = `${5 + delay}s`; // Ajusta la duración de la animación
+        //     document.body.appendChild(girasol);
+
+        //     girasol.addEventListener('animationiteration', () => {
+        //         // Elimina el girasol cuando cae al suelo
+        //         document.body.removeChild(girasol);
+        //         createGirasol(); // Crea otro girasol después de que caiga uno
+        //     });
+        // }
+
+        // for (let i = 0; i < 50; i++) {
+        //     setTimeout(createGirasol, Math.random() * 5000); // Agrega girasoles con un retraso aleatorio
+        // }
+    </script>
+  </body>
+</html>
